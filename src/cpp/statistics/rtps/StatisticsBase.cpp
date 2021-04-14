@@ -185,6 +185,8 @@ bool StatisticsParticipantImpl::add_statistics_listener(
     }
 
     // Check if the listener should be registered in writers
+    lock.unlock();
+
     bool writers_res = true;
     if (are_writers_involved(new_mask)
             && !are_writers_involved(old_mask))
