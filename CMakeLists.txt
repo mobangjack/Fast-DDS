@@ -215,6 +215,10 @@ endif()
 ###############################################################################
 option(SECURITY "Activate security" OFF)
 
+if(ANDROID)
+  set(SECURITY OFF)
+endif()
+
 if(SECURITY)
     find_package(OpenSSL REQUIRED)
 endif()

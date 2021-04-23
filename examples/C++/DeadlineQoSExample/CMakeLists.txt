@@ -67,7 +67,9 @@ include_directories(${ASIO_INCLUDE_DIR})
 add_executable(DeadlineQoSExample ${DEADLINEQOS_EXAMPLE_SOURCES})
 target_link_libraries(DeadlineQoSExample fastrtps fastcdr)
 if(UNIX)
-  target_link_libraries(DeadlineQoSExample pthread)
+  if(NOT ANDROID)
+    target_link_libraries(DeadlineQoSExample pthread)
+  endif()
 endif()
 
 install(TARGETS DeadlineQoSExample
